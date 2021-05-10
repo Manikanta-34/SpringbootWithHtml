@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student-Management-System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<div align="center">
+			<h1>List Of Students</h1>
+		</div>
+		<!-- <div class="row"> -->
+		<div align="center">
+			<div class="col-lg-3">
+				<a th:href="@{/student/form}" class="btn btn-primary">Add
+					Student</a>
+			</div>
+
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead class="table-dark">
+				<tr>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Email</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="bg-success" th:each="student: ${students}">
+					<td th:text="${student.firstname}"></td>
+					<td class="bg-warning" th:text="${student.lastname}"></td>
+					<td th:text="${student.email}"></td>
+					<td class="bg-light"><a th:href="@{/student/editForm/{id}(id=${student.id})}"
+						class="btn btn-primary"> Update</a> <a
+						th:href="@{/student/delete/{id}(id=${student.id})}"
+						class="btn btn-danger"> Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
